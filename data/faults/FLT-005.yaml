@@ -1,0 +1,16 @@
+id: FLT-005
+name: 位相センサーの校正のずれ
+symptoms: 位相センサーの校正のずれが、通信ロックの維持に基準から外れる。外れは位相センサーの監視点に留まり、外板温度センサーの同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯5の記録に残る。
+cause: 位相センサーの内部状態が校正のずれを維持し、外板温度センサーへは同じ偏差を伝えない。
+severity: 1
+systems: sensors
+derived:
+  - FLT-006
+components:
+  - phase_sensor
+triggers:
+  - comms_active
+role: sensor_lie
+confusers: []
+discriminators:
+  - 通信ロックの維持以外では位相センサーの校正のずれは再現しない。

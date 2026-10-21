@@ -1,0 +1,16 @@
+id: FLT-082
+name: 復帰直後の復号遅れ
+symptoms: デコヒーレンス遮蔽の復号タイミングが、折畳みから戻った短い時間だけ遅れる。遅延のあいだ温度の指示は変わらない。位相が静まるとロックは戻る。遅れは遮蔽側の記録に残る。
+cause: 復帰直後の残渣位相が、遮蔽の復号タイミングをずらす。
+severity: 2
+systems: comms
+derived:
+  - FLT-083
+components:
+  - decoherence_shield
+triggers:
+  - after_jump
+role: local
+confusers: []
+discriminators:
+  - 温度の指示は変わらない。

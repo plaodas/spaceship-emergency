@@ -1,0 +1,16 @@
+id: FLT-081
+name: 燃焼中の遮蔽入射
+symptoms: デコヒーレンス遮蔽の内側で位相雑音が上がり、通信ロックが燃焼のあいだだけ落ちる。燃焼を止めるとロックは戻る。雑音の記録は遮蔽の入射計に残る。同じ偏差は当該部品の記録に残る。
+cause: 遮蔽への入射が、燃焼中の位相雑音を上げる。
+severity: 3
+systems: comms
+derived:
+  - FLT-082
+components:
+  - decoherence_shield
+triggers:
+  - during_burn
+role: local
+confusers: []
+discriminators:
+  - 燃焼を止めると通信ロックは戻る。

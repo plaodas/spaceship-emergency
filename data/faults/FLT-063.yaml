@@ -1,0 +1,16 @@
+id: FLT-063
+name: 折畳み直前の甲板荷重
+symptoms: 質量影補償器が折畳みへ入る直前に負荷を上げ、擬似重力甲板の指示が重くなる。重さは温度の変化を伴わない。補償を戻すと甲板の指示も基準へ戻る。負荷の記録は補償器に残る。
+cause: 折畳み直前の補償負荷が、甲板の加速度基準を上げる。
+severity: 3
+systems: gravity
+derived:
+  - FLT-065
+components:
+  - mass_shadow_compensator
+triggers:
+  - during_jump
+role: local
+confusers: []
+discriminators:
+  - 温度の変化は伴わない。

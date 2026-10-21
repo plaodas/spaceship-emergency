@@ -1,0 +1,7 @@
+id: CPL-21
+name: 光子ノズルの推力配分
+links:
+  - port_injector
+  - starboard_injector
+  - photon_nozzle
+text: 光子ノズルの推力バランスは、左舷噴射格子と右舷噴射格子の両方に依存する。片側の格子の出力だけが変わると、ノズル内の運動量が一方向へ偏る。ノズルは二つの格子の出力を一つの開口で受けている。

@@ -4,7 +4,8 @@ symptoms: 右舷給電レグの電圧が下がると、右舷の冷却ポンプ�
 cause: 右舷給電レグの電圧低下が、同じレグの冷却ポンプと噴射格子制御を同時に弱める。
 severity: 4
 systems: power
-derived: []
+derived:
+  - FLT-009
 components:
   - starboard_power_leg
 triggers:

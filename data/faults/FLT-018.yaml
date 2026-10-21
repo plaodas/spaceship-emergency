@@ -1,0 +1,16 @@
+id: FLT-018
+name: 質量影による折畳み位相の乱れ
+symptoms: 右舷折畳みコイルの駆動が、質量影の勾配に合わせて位相を乱す。乱れのあいだコイルの温度は基準のままである。影が弱いときは位相も基準へ戻る。同じ偏差は当該部品の記録に残る。
+cause: 質量影の勾配が、コイル駆動の位相基準を揺らす。
+severity: 2
+systems: fold
+derived:
+  - FLT-019
+components:
+  - starboard_fold_coil
+triggers:
+  - during_jump
+role: local
+confusers: []
+discriminators:
+  - コイルの温度指示は基準のままである。

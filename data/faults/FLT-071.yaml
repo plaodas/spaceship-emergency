@@ -1,0 +1,16 @@
+id: FLT-071
+name: 質量影補償器の保持力の低下
+symptoms: 質量影補償器の保持力の低下が、熱パルスのあとに基準から外れる。外れは質量影補償器の監視点に留まり、右舷折畳みコイルの同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯47の記録に残る。
+cause: 質量影補償器の内部状態が保持力の低下を維持し、右舷折畳みコイルへは同じ偏差を伝えない。
+severity: 3
+systems: fold
+derived:
+  - FLT-016
+components:
+  - mass_shadow_compensator
+triggers:
+  - after_heat_pulse
+role: local
+confusers: []
+discriminators:
+  - 熱パルスのあと以外では質量影補償器の保持力の低下は再現しない。

@@ -4,7 +4,8 @@ symptoms: 通常空間へ戻った直後、右舷の慣性ダンパー位相が�
 cause: 右舷慣性ダンパーの位相がずれ、乗員の体を右舷側へ引く。
 severity: 3
 systems: gravity
-derived: []
+derived:
+  - FLT-062
 components:
   - starboard_damper
 triggers:

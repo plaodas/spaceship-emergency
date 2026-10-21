@@ -1,0 +1,16 @@
+id: FLT-034
+name: 左舷暗黒熱弁の同時に見える揺れ
+symptoms: 左舷暗黒熱弁の同時に見える揺れが、折畳みの途中に基準から外れる。外れは左舷暗黒熱弁の監視点に留まり、ダークマター貯槽の同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯22の記録に残る。
+cause: 左舷暗黒熱弁の内部状態が同時に見える揺れを維持し、ダークマター貯槽へは同じ偏差を伝えない。
+severity: 3
+systems: dark_thermal
+derived:
+  - FLT-037
+components:
+  - port_dark_valve
+triggers:
+  - during_jump
+role: confounder
+confusers: []
+discriminators:
+  - 折畳みの途中以外では左舷暗黒熱弁の同時に見える揺れは再現しない。

@@ -1,0 +1,16 @@
+id: FLT-053
+name: 右舷エミッタの駆動余裕不足
+symptoms: 右舷シールドエミッタの駆動余裕が減り、同じ展開指令でも電界が基準より弱い。弱さは展開中だけ観測され、畳むと駆動電流は基準へ戻る。外板の温度はこの余裕の記録には出ない。
+cause: 駆動余裕の不足が、展開中の電界を基準から落とす。
+severity: 2
+systems: shield
+derived:
+  - FLT-052
+components:
+  - starboard_shield_emitter
+triggers:
+  - shield_on
+role: local
+confusers: []
+discriminators:
+  - 外板の温度はこの記録には出ない。

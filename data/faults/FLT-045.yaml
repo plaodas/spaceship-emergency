@@ -1,0 +1,16 @@
+id: FLT-045
+name: 外套熱のバス受領
+symptoms: 暗黒熱バスが外套から戻る熱を定常的に受け取っている。受け取りは左右の外板を区別しない。燃焼を止めると、バス入口の温度も外套と一緒に下がる。同じ偏差は当該部品の記録に残る。
+cause: 外套の廃熱が、バスの入口へ定常的に入る。
+severity: 2
+systems: dark_thermal
+derived:
+  - FLT-046
+components:
+  - dark_thermal_bus
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - 受け取りは特定の舷の外板に寄らない。

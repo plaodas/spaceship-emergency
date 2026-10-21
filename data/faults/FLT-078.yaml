@@ -1,0 +1,16 @@
+id: FLT-078
+name: 位相ロックアレイの熱の滞留
+symptoms: 位相ロックアレイの熱の滞留が、姿勢変更に基準から外れる。外れは位相ロックアレイの監視点に留まり、デコヒーレンス遮蔽の同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯52の記録に残る。
+cause: 位相ロックアレイの内部状態が熱の滞留を維持し、デコヒーレンス遮蔽へは同じ偏差を伝えない。
+severity: 3
+systems: comms
+derived:
+  - FLT-079
+components:
+  - phase_lock_array
+triggers:
+  - maneuver
+role: local
+confusers: []
+discriminators:
+  - 姿勢変更以外では位相ロックアレイの熱の滞留は再現しない。

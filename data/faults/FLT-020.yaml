@@ -1,0 +1,16 @@
+id: FLT-020
+name: 強補償時の折畳み位相乱れ
+symptoms: 質量影補償を強くしたとき、右舷折畳みコイルの駆動位相が補償器の負荷に合わせて乱れる。乱れは温度の指示には出ない。補償を弱めると位相は基準へ戻る。同じ偏差は当該部品の記録に残る。
+cause: 補償器の負荷が、コイル駆動の位相基準を動かす。
+severity: 3
+systems: fold
+derived:
+  - FLT-033
+components:
+  - starboard_fold_coil
+triggers:
+  - high_power
+role: local
+confusers: []
+discriminators:
+  - 温度指示は補償の強さでは変わらない。

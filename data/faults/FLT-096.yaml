@@ -1,0 +1,16 @@
+id: FLT-096
+name: 外板温度が基準のまま
+symptoms: 右舷外板の構造温度は基準のままで、居住区側の暑さとは別の値を示す。外板の監視点はダクト内の空気を測っていない。構造温度は定常の範囲に留まる。同じ偏差は当該部品の記録に残る。
+cause: 外板の構造温度の経路に、居住区の空気は入っていない。
+severity: 1
+systems: hull
+derived:
+  - FLT-097
+components:
+  - starboard_hull
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - ダクト内の空気とは別の値を示す。

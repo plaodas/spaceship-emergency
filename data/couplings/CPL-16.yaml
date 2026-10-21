@@ -1,0 +1,7 @@
+id: CPL-16
+name: 外板温度センサーの読取
+links:
+  - hull_temp_sensor
+  - starboard_hull
+  - starboard_fold_coil
+text: 外板温度センサーは右舷外板を読む。折畳みから戻った直後の残渣位相が、このセンサーの指示をずらすことがある。指示のずれは外板の構造温度そのものの変化とは別である。

@@ -1,0 +1,16 @@
+id: FLT-085
+name: 強補償時の位相ロック外れ
+symptoms: デコヒーレンス遮蔽の基準位相が、強い質量影補償のあいだ外れる。外れは補償を強くしているときに再現し、温度の指示は変わらない。補償を弱めると位相は戻る。同じ偏差は当該部品の記録に残る。
+cause: 補償に伴う位相の乱れが、遮蔽の基準を外す。
+severity: 3
+systems: comms
+derived:
+  - FLT-023
+components:
+  - decoherence_shield
+triggers:
+  - high_power
+role: local
+confusers: []
+discriminators:
+  - 温度指示は変わらない。

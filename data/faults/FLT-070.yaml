@@ -1,0 +1,16 @@
+id: FLT-070
+name: 左舷トリムコイルの密封の漏れ
+symptoms: 左舷トリムコイルの密封の漏れが、折畳みの途中に基準から外れる。外れは左舷トリムコイルの監視点に留まり、質量影補償器の同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯46の記録に残る。
+cause: 左舷トリムコイルの内部状態が密封の漏れを維持し、質量影補償器へは同じ偏差を伝えない。
+severity: 2
+systems: fold
+derived:
+  - FLT-071
+components:
+  - port_fold_coil
+triggers:
+  - during_jump
+role: local
+confusers: []
+discriminators:
+  - 折畳みの途中以外では左舷トリムコイルの密封の漏れは再現しない。

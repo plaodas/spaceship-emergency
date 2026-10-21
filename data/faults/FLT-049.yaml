@@ -1,0 +1,17 @@
+id: FLT-049
+name: 右舷噴射格子の境界での滞り
+symptoms: 右舷噴射格子の境界での滞りが、定常運転に基準から外れる。外れは右舷噴射格子の監視点に留まり、対消滅室の同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯32の記録に残る。
+cause: 右舷噴射格子の内部状態が境界での滞りを維持し、対消滅室へは同じ偏差を伝えない。
+severity: 3
+systems: annihilation
+derived:
+  - FLT-060
+components:
+  - starboard_injector
+  - annihilation_jacket
+triggers:
+  - steady
+role: bridge
+confusers: []
+discriminators:
+  - 定常運転以外では右舷噴射格子の境界での滞りは再現しない。

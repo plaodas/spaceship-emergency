@@ -1,0 +1,16 @@
+id: FLT-083
+name: 位相ロックアレイの保持力の低下
+symptoms: 位相ロックアレイの保持力の低下が、熱パルスのあとに基準から外れる。外れは位相ロックアレイの監視点に留まり、デコヒーレンス遮蔽の同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯55の記録に残る。
+cause: 位相ロックアレイの内部状態が保持力の低下を維持し、デコヒーレンス遮蔽へは同じ偏差を伝えない。
+severity: 1
+systems: comms
+derived:
+  - FLT-085
+components:
+  - phase_lock_array
+triggers:
+  - after_heat_pulse
+role: local
+confusers: []
+discriminators:
+  - 熱パルスのあと以外では位相ロックアレイの保持力の低下は再現しない。

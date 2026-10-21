@@ -1,0 +1,16 @@
+id: FLT-073
+name: 光子ノズルの流量偏り
+symptoms: 光子ノズルの出口で運動量が一方向へ偏る。偏りは噴射が続いているあいだ残り、ノズルを止めると消える。偏りは折畳みの時刻には揃わず、外板の温度指示とも別の記録に残る。
+cause: 上流の供給が偏ったあとで、ノズル内の流れが片側へ寄る。
+severity: 2
+systems: annihilation
+derived:
+  - FLT-074
+components:
+  - photon_nozzle
+triggers:
+  - during_burn
+role: local
+confusers: []
+discriminators:
+  - 外板の温度指示とは別の記録に残る。

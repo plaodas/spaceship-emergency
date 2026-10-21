@@ -1,0 +1,16 @@
+id: FLT-009
+name: 右舷給電レグの接触抵抗
+symptoms: 右舷給電レグの接続部に接触抵抗が出て、レグの末端電圧が指令より低くなる。低さは電流が大きいときに広がり、電流を落とすと末端電圧は指令へ戻る。同じ偏差は当該部品の記録に残る。
+cause: 接続部の抵抗が、レグ末端の電圧を指令から引き離す。
+severity: 2
+systems: power
+derived:
+  - FLT-008
+components:
+  - starboard_power_leg
+triggers:
+  - high_power
+role: local
+confusers: []
+discriminators:
+  - 電流を落とすと末端電圧は指令へ戻る。

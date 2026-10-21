@@ -1,0 +1,16 @@
+id: FLT-074
+name: 光子ノズルの片側摩耗
+symptoms: 光子ノズルの片側内壁が痩せ、同じ指令でも出口の向きがわずかにずれる。ずれは燃焼のあいだ蓄積し、停止するとそれ以上は進まない。外板の温度とは別の監視点に出る。同じ偏差は当該部品の記録に残る。
+cause: 偏った流れが、内壁の片側だけを削る。
+severity: 2
+systems: annihilation
+derived:
+  - FLT-073
+components:
+  - photon_nozzle
+triggers:
+  - during_burn
+role: local
+confusers: []
+discriminators:
+  - 外板の温度とは別の監視点に出る。

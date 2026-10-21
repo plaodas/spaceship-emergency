@@ -1,0 +1,6 @@
+id: CPL-09
+name: シールド廃熱の入口
+links:
+  - starboard_shield_emitter
+  - dark_thermal_bus
+text: 右舷シールドエミッタの廃熱は暗黒熱バスへ入る。エミッタが展開して熱を出しているあいだ、その廃熱はこの入口からバスへ進む。エミッタを畳むと、この入口からの熱は止まる。

@@ -1,0 +1,62 @@
+# compose 15件。required はクラスタに欲しいカードと結合ノート。
+# avoid は本命にしてはいけない ID。結論を1枚に書いたカードは required に入れない。
+- id: Q01
+  query: 最近ワープ直後だけ機体の右側が熱くなる。燃費も悪化した。
+  required: [FLT-017, FLT-044, FLT-028, CPL-03]
+  avoid: [FLT-052, FLT-061, FLT-008]
+- id: Q02
+  query: ジャンプから戻ったあと数分だけ右の壁が熱く、そのあと燃料の減りが早い。
+  required: [FLT-017, FLT-044, FLT-028, CPL-03]
+  avoid: [FLT-052, FLT-061, FLT-008]
+- id: Q03
+  query: 対消滅を吹かしている間だけ通信が途切れる。アイドルだと正常。
+  required: [FLT-030, FLT-081, CPL-11]
+  avoid: []
+- id: Q04
+  query: 通信の遅れが、ワープから戻った数分だけひどくなる。熱は感じない。
+  required: [FLT-019, FLT-082, CPL-12]
+  avoid: [FLT-028]
+- id: Q05
+  query: 燃費がじわじわ悪い。照明も暗い。熱さは船体全体で、片側ではない。
+  required: [FLT-010, FLT-032, CPL-15]
+  avoid: [FLT-017, FLT-044, CPL-03]
+- id: Q06
+  query: シールドを張っている間だけ右側の温度表示が上がる。ワープとは無関係に見える。
+  required: [FLT-052, FLT-054, CPL-18]
+  avoid: [FLT-017]
+- id: Q07
+  query: 居住区の右側だけ蒸し暑く、船体の外板は冷たい。燃費は普通。
+  required: [FLT-090, FLT-096, CPL-17]
+  avoid: [FLT-017, CPL-03]
+- id: Q08
+  query: ワープに入る直前に床が重くなり、戻ったあとも警報が残る。熱くはない。
+  required: [FLT-063, FLT-018, CPL-10]
+  avoid: [FLT-017]
+- id: Q10
+  query: エンジンまわりが常に熱い。ワープとは関係なく、左右差もない。
+  required: [FLT-029, FLT-045, CPL-02]
+  avoid: [FLT-017, CPL-03]
+- id: Q12
+  query: ジャンプ復帰のたびに右舷外板温度だけ跳ねる。消費はまだ正常。
+  required: [FLT-017, FLT-048, CPL-01]
+  avoid: [FLT-028]
+- id: Q15
+  query: ダークマター貯槽の残量が減るにつれ、ジャンプ後の熱引きが悪くなった気がする。
+  required: [FLT-046, FLT-047, CPL-07]
+  avoid: []
+- id: Q16
+  query: 左側は正常なのに、右側だけワープ後に熱い。燃料計は関係なさそうで、でも減りが早い。
+  required: [FLT-017, FLT-044, FLT-028, CPL-03]
+  avoid: [FLT-052, FLT-061, FLT-008]
+- id: Q17
+  query: 警報は右舷温度と反物質流量の二つが、復帰後すぐ同時に点く。
+  required: [FLT-017, FLT-044, FLT-028, CPL-03]
+  avoid: [FLT-052, FLT-061, FLT-008]
+- id: Q19
+  query: 質量影の補償を強くすると通信の位相が外れ、推力はそのままでも消費が増える。
+  required: [FLT-065, FLT-020, FLT-085, FLT-032, CPL-10, CPL-12]
+  avoid: []
+- id: Q20
+  query: 右舷給電が落ちている表示のあと、冷却も通信も推進効率も一緒に悪い。
+  required: [FLT-008, FLT-013, CPL-20]
+  avoid: [FLT-017]

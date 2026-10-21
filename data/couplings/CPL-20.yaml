@@ -1,0 +1,7 @@
+id: CPL-20
+name: 右舷給電レグの負荷
+links:
+  - starboard_power_leg
+  - starboard_injector
+  - starboard_dark_valve
+text: 右舷給電レグは、右舷の噴射格子制御と冷却ポンプを同じレグで賄う。レグの電圧が下がると、噴射格子の制御と右舷暗黒熱弁へ向かう冷却側の電力が同時に弱る。原因はレグ側にある。

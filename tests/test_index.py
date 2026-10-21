@@ -36,7 +36,14 @@ class IndexTests(unittest.TestCase):
         target = fault_embed_text(self.faults["FLT-017"])
 
         def embed(texts):
-            return [[1.0, 0.0] if text in (target, Q01) else [0.0, 1.0] for text in texts]
+            vectors = []
+            for text in texts:
+                if text in (target, Q01):
+                    vectors.append([1.0, 0.0, 0.0])
+                else:
+                    slot = (abs(hash(text)) % 997) / 997
+                    vectors.append([0.0, 1.0, slot])
+            return vectors
 
         collection = index_faults(self.faults, embed, self.client, "stub")
         hits = search(collection, embed([Q01])[0], k=len(self.faults))
@@ -49,9 +56,9 @@ class IndexTests(unittest.TestCase):
         collection = index_faults(self.faults, embed, self.client, "stub")
         ids = set(collection.get()["ids"])
         self.assertEqual(ids, set(self.faults))
-        self.assertEqual(len(ids), 6)
+        self.assertEqual(len(ids), 100)
         self.assertNotIn("CPL-03", ids)
-        self.assertIn("CPL-03", self.couplings)
+        self.assertEqual(len(self.couplings), 24)
 
 
 if __name__ == "__main__":
