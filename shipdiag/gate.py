@@ -1,13 +1,11 @@
 """Embedding gate for Q01. Talks to an already running Ollama."""
 
-import json
 import os
 import sys
-import urllib.error
-import urllib.request
 from pathlib import Path
 
 from shipdiag.index import index_faults, persistent_client, search
+from shipdiag.ollama import DEFAULT_HOST, embedder, ensure_model, ollama_ready
 from shipdiag.validate import load_corpus, validate_corpus
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -17,7 +15,6 @@ MODEL_FILE = ROOT / "embedding_model.txt"
 Q01 = "最近ワープ直後だけ機体の右側が熱くなる。燃費も悪化した。"
 CANDIDATES = ("bge-m3", "qwen3-embedding:4b")
 PASS_RANK = 3
-DEFAULT_HOST = "http://127.0.0.1:11434"
 
 
 def main():
@@ -50,65 +47,6 @@ def main():
             return 0
     print("FLT-017 はどちらのモデルでも3位以内に入りませんでした。", file=sys.stderr)
     return 1
-
-
-def ollama_ready(host):
-    try:
-        get_json(host, "/api/tags", timeout=3)
-    except (urllib.error.URLError, TimeoutError, OSError):
-        return False
-    return True
-
-
-def ensure_model(host, model):
-    tags = get_json(host, "/api/tags", timeout=10)
-    names = [item.get("name", "") for item in tags.get("models", [])]
-    if any(name == model or name.startswith(model + ":") for name in names):
-        return
-    request = urllib.request.Request(
-        host + "/api/pull",
-        data=json.dumps({"model": model}).encode(),
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-    with urllib.request.urlopen(request, timeout=1800) as response:
-        for raw in response:
-            line = raw.decode().strip()
-            if not line:
-                continue
-            event = json.loads(line)
-            if event.get("error"):
-                raise RuntimeError(event["error"])
-            status = event.get("status")
-            if status:
-                print(status, file=sys.stderr)
-
-
-def embedder(host, model):
-    def embed(texts):
-        payload = post_json(host, "/api/embed", {"model": model, "input": texts}, timeout=300)
-        vectors = payload.get("embeddings")
-        if not vectors:
-            raise RuntimeError(f"{model} の /api/embed がベクトルを返しませんでした。")
-        return vectors
-
-    return embed
-
-
-def get_json(host, path, timeout):
-    with urllib.request.urlopen(host + path, timeout=timeout) as response:
-        return json.load(response)
-
-
-def post_json(host, path, payload, timeout):
-    request = urllib.request.Request(
-        host + path,
-        data=json.dumps(payload).encode(),
-        headers={"Content-Type": "application/json"},
-        method="POST",
-    )
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        return json.load(response)
 
 
 if __name__ == "__main__":
