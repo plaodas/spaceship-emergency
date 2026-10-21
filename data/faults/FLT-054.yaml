@@ -1,0 +1,16 @@
+id: FLT-054
+name: 展開中のエミッタ入射熱
+symptoms: 右舷シールドエミッタが展開中に粒子を受け、入射熱で外板の温度指示が上がる。指示の変化は展開しているあいだに限られ、折畳みの時刻には揃わない。エミッタを畳むと指示は元の勾配へ戻る。
+cause: 展開中の粒子入射が、外板の温度指示を上げる。
+severity: 3
+systems: shield
+derived:
+  - FLT-058
+components:
+  - starboard_shield_emitter
+triggers:
+  - shield_on
+role: local
+confusers: []
+discriminators:
+  - 折畳みの時刻には揃わない。

@@ -1,0 +1,16 @@
+id: FLT-090
+name: 右舷ダクトの空気滞り
+symptoms: 右舷居住区ダクトの空気が滞り、居住区のその舷だけが蒸し暑くなる。滞りのあいだ船体の外板の温度は基準のままである。循環を戻すと空気の温度も基準へ戻る。同じ偏差は当該部品の記録に残る。
+cause: ダクト内の流れが滞り、居住区側の空気に熱が残る。
+severity: 2
+systems: life_support
+derived:
+  - FLT-091
+components:
+  - starboard_habitat_duct
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - 外板の温度は基準のままである。

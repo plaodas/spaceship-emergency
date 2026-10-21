@@ -4,7 +4,8 @@ symptoms: 恒星風シールドの右舷エミッタが粒子を受けるあい�
 cause: 恒星風の粒子が右舷エミッタに入り、入射熱が右舷外板の温度を上げる。
 severity: 2
 systems: shield
-derived: []
+derived:
+  - FLT-053
 components:
   - starboard_shield_emitter
   - starboard_hull

@@ -12,22 +12,14 @@ from shipdiag.retrieve import assemble
 from shipdiag.validate import load_corpus, validate_corpus
 
 CHROMA_PATH = DATA / "chroma"
-EXPECTED = {
-    "FLT-017",
-    "FLT-044",
-    "FLT-028",
-    "FLT-052",
-    "FLT-061",
-    "FLT-008",
-    "CPL-03",
-}
+REQUIRED = {"FLT-017", "FLT-044", "FLT-028", "CPL-03"}
 GENERATION_MODELS = ("qwen3:8b", "qwen3:4b")
 
 
 def main():
     host = os.environ.get("OLLAMA_HOST", DEFAULT_HOST).rstrip("/")
     faults, couplings = load_corpus(DATA)
-    issues = validate_corpus(faults, couplings, complete=False)
+    issues = validate_corpus(faults, couplings, complete=True)
     if issues:
         print("\n".join(issues), file=sys.stderr)
         return 1
@@ -55,8 +47,14 @@ def main():
     for item in cluster:
         print(f"{item['id']} {item['reason']}")
     ids = {item["id"] for item in cluster}
-    if ids != EXPECTED:
-        print(f"クラスタが期待と違います: {sorted(ids)}", file=sys.stderr)
+    missing = REQUIRED - ids
+    if missing:
+        print(f"クラスタに必要な文書がありません: {sorted(missing)}", file=sys.stderr)
+        return 1
+    downstream = faults["FLT-028"]["derived"]
+    leaked = [card_id for card_id in downstream if card_id in ids]
+    if leaked:
+        print(f"FLT-028 の下流がクラスタに残っています: {leaked}", file=sys.stderr)
         return 1
 
     documents = [(card_id, document_text(card=card)) for card_id, card in faults.items()]

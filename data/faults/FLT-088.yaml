@@ -1,0 +1,16 @@
+id: FLT-088
+name: 大気循環の位相のずれ
+symptoms: 大気循環の位相のずれが、シールド展開に基準から外れる。外れは大気循環の監視点に留まり、右舷居住区ダクトの同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯59の記録に残る。
+cause: 大気循環の内部状態が位相のずれを維持し、右舷居住区ダクトへは同じ偏差を伝えない。
+severity: 5
+systems: life_support
+derived:
+  - FLT-089
+components:
+  - atmosphere_loop
+triggers:
+  - shield_on
+role: local
+confusers: []
+discriminators:
+  - シールド展開以外では大気循環の位相のずれは再現しない。

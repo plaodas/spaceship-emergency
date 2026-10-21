@@ -17,6 +17,9 @@ EXPECTED = {
     "FLT-061",
     "FLT-008",
     "CPL-03",
+    "CPL-16",
+    "CPL-18",
+    "CPL-20",
 }
 CONCLUSION = "両方とも「直後だけ」になる"
 
@@ -40,6 +43,7 @@ class RetrieveTests(unittest.TestCase):
         reasons = {item["id"]: item["reason"] for item in cluster}
         self.assertEqual(reasons["FLT-017"], "seed")
         self.assertEqual(reasons["CPL-03"], "coupling")
+        self.assertNotIn("FLT-073", reasons)
 
     def test_dangling_downstream_is_dropped(self):
         faults = copy.deepcopy(self.faults)

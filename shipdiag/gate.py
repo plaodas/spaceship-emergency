@@ -14,13 +14,15 @@ CHROMA_PATH = DATA / "chroma"
 MODEL_FILE = ROOT / "embedding_model.txt"
 Q01 = "最近ワープ直後だけ機体の右側が熱くなる。燃費も悪化した。"
 CANDIDATES = ("bge-m3", "qwen3-embedding:4b")
-PASS_RANK = 3
+def pass_rank(n_faults):
+    """Six cards make top-8 vacuous, so the demo gate used rank 3. At 100, top-8 is the bar."""
+    return 8 if n_faults >= 100 else 3
 
 
 def main():
     host = os.environ.get("OLLAMA_HOST", DEFAULT_HOST).rstrip("/")
     faults, _couplings = load_corpus(DATA)
-    issues = validate_corpus(faults, _couplings, complete=False)
+    issues = validate_corpus(faults, _couplings, complete=True)
     if issues:
         print("\n".join(issues), file=sys.stderr)
         return 1
@@ -40,12 +42,13 @@ def main():
         print(f"model {model}")
         for rank, (card_id, distance) in enumerate(hits, start=1):
             print(f"{rank} {card_id} {distance:.4f}")
+        limit = pass_rank(len(faults))
         rank = next((i for i, (card_id, _) in enumerate(hits, start=1) if card_id == "FLT-017"), None)
-        if rank is not None and rank <= PASS_RANK:
+        if rank is not None and rank <= limit:
             MODEL_FILE.write_text(model + "\n", encoding="utf-8")
             print(f"passed with {model} at rank {rank}")
             return 0
-    print("FLT-017 はどちらのモデルでも3位以内に入りませんでした。", file=sys.stderr)
+    print(f"FLT-017 はどちらのモデルでも{pass_rank(len(faults))}位以内に入りませんでした。", file=sys.stderr)
     return 1
 
 

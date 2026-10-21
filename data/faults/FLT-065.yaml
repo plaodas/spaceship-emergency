@@ -1,0 +1,16 @@
+id: FLT-065
+name: 強補償時の質量影負荷
+symptoms: 質量影補償を強くすると、補償器の負荷が上がり、折畳み位相の基準が同じ負荷を参照して乱れる。乱れは温度の指示には出ない。補償を弱めると負荷は下がる。同じ偏差は当該部品の記録に残る。
+cause: 強い補償が、補償器と折畳み位相の共通基準を動かす。
+severity: 3
+systems: gravity
+derived:
+  - FLT-075
+components:
+  - mass_shadow_compensator
+triggers:
+  - high_power
+role: local
+confusers: []
+discriminators:
+  - 温度指示は補償の強さでは変わらない。

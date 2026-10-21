@@ -1,0 +1,16 @@
+id: FLT-024
+name: 零点母線の見かけの偏差
+symptoms: 零点母線の見かけの偏差が、定常運転に基準から外れる。外れは零点母線の監視点に留まり、右舷給電レグの同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯16の記録に残る。
+cause: 零点母線の内部状態が見かけの偏差を維持し、右舷給電レグへは同じ偏差を伝えない。
+severity: 2
+systems: power
+derived:
+  - FLT-040
+components:
+  - zpe_bus
+triggers:
+  - steady
+role: confounder
+confusers: []
+discriminators:
+  - 定常運転以外では零点母線の見かけの偏差は再現しない。

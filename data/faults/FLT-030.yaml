@@ -1,0 +1,16 @@
+id: FLT-030
+name: 対消滅室の光子漏洩
+symptoms: 対消滅室が燃焼しているあいだ、室から漏れる高エネルギー光子が増える。光子は室の外へ出て、燃焼を止めると元の量へ戻る。漏れの記録は室の外側の入射計に残る。同じ偏差は当該部品の記録に残る。
+cause: 燃焼中の室壁から、高エネルギー光子が外へ漏れる。
+severity: 3
+systems: annihilation
+derived:
+  - FLT-031
+components:
+  - annihilation_chamber
+triggers:
+  - during_burn
+role: local
+confusers: []
+discriminators:
+  - 燃焼を止めると漏洩は止まる。

@@ -1,0 +1,17 @@
+id: FLT-035
+name: 光子ノズルの境界の脈動
+symptoms: 光子ノズルの境界の脈動が、熱パルスのあとに基準から外れる。外れは光子ノズルの監視点に留まり、反物質磁気瓶の同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯23の記録に残る。
+cause: 光子ノズルの内部状態が境界の脈動を維持し、反物質磁気瓶へは同じ偏差を伝えない。
+severity: 4
+systems: annihilation
+derived:
+  - FLT-049
+components:
+  - photon_nozzle
+  - port_injector
+triggers:
+  - after_heat_pulse
+role: bridge
+confusers: []
+discriminators:
+  - 熱パルスのあと以外では光子ノズルの境界の脈動は再現しない。

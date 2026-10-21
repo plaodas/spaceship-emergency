@@ -1,0 +1,16 @@
+id: FLT-072
+name: ダークマター貯槽の応答遅れ
+symptoms: ダークマター貯槽の応答遅れが、定常運転に基準から外れる。外れはダークマター貯槽の監視点に留まり、逆止弁の同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯48の記録に残る。
+cause: ダークマター貯槽の内部状態が応答遅れを維持し、逆止弁へは同じ偏差を伝えない。
+severity: 4
+systems: dark_thermal
+derived:
+  - FLT-021
+components:
+  - dark_matter_reservoir
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - 定常運転以外ではダークマター貯槽の応答遅れは再現しない。

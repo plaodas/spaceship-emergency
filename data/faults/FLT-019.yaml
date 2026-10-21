@@ -1,0 +1,16 @@
+id: FLT-019
+name: 折畳み復帰後の駆動位相ずれ
+symptoms: 右舷折畳みコイルの駆動位相が、折畳みから戻った短い時間だけずれる。ずれているあいだコイルの温度指示は基準のままである。位相は駆動が静まると基準へ戻る。同じ偏差は当該部品の記録に残る。
+cause: 復帰直後の残渣位相が、コイルの駆動基準をずらす。
+severity: 2
+systems: fold
+derived:
+  - FLT-020
+components:
+  - starboard_fold_coil
+triggers:
+  - after_jump
+role: local
+confusers: []
+discriminators:
+  - 温度指示は基準のままで、位相だけがずれる。

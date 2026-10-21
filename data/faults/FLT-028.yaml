@@ -4,7 +4,8 @@ symptoms: 対消滅室の左右でジャケット温度差がおよそ15Kを超�
 cause: 片側の熱引きが不足して室内に温度勾配ができる。対称な燃焼を維持する補正が、反物質流量を上げる。
 severity: 3
 systems: annihilation
-derived: []
+derived:
+  - FLT-073
 components:
   - starboard_injector
   - annihilation_chamber

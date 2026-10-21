@@ -1,0 +1,16 @@
+id: FLT-013
+name: 右舷弁制御のレグ依存
+symptoms: 右舷暗黒熱弁の制御電力が、右舷給電レグの電圧に合わせて落ちる。弁の機械的な固着は見られず、レグの電圧が戻ると制御も戻る。熱の滞りはこのカードでは述べない。同じ偏差は当該部品の記録に残る。
+cause: 弁の制御電源が給電レグの電圧に従う。
+severity: 3
+systems: power
+derived:
+  - FLT-024
+components:
+  - starboard_dark_valve
+triggers:
+  - steady
+role: bridge
+confusers: []
+discriminators:
+  - レグの電圧が基準なら、弁の制御電力も基準である。

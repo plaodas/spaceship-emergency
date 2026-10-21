@@ -1,0 +1,16 @@
+id: FLT-087
+name: 右舷シールドエミッタの開度不足
+symptoms: 右舷シールドエミッタの開度不足が、高出力の給電に基準から外れる。外れは右舷シールドエミッタの監視点に留まり、左舷シールドエミッタの同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯58の記録に残る。
+cause: 右舷シールドエミッタの内部状態が開度不足を維持し、左舷シールドエミッタへは同じ偏差を伝えない。
+severity: 4
+systems: shield
+derived:
+  - FLT-025
+components:
+  - starboard_shield_emitter
+triggers:
+  - high_power
+role: local
+confusers: []
+discriminators:
+  - 高出力の給電以外では右舷シールドエミッタの開度不足は再現しない。

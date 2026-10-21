@@ -34,11 +34,13 @@ class ValidateDemoTests(unittest.TestCase):
         self.assertEqual(self.faults["FLT-044"]["triggers"], ["after_heat_pulse"])
 
     def test_reserved_prose_matches_demo_doc(self):
-        for fault_id, card in self.faults.items():
-            self.assertEqual(card["symptoms"], self.quotes[fault_id][0])
+        for doc_id, quotes in self.quotes.items():
+            if doc_id in self.faults:
+                self.assertEqual(self.faults[doc_id]["symptoms"], quotes[0])
+            else:
+                self.assertEqual(self.couplings[doc_id]["text"], quotes[0])
         for fault_id in EVIDENCE_IDS:
             self.assertEqual(self.faults[fault_id]["cause"], self.quotes[fault_id][1])
-        self.assertEqual(self.couplings["CPL-03"]["text"], self.quotes["CPL-03"][0])
 
     def test_crew_word_is_rejected(self):
         faults = copy.deepcopy(self.faults)
@@ -48,9 +50,9 @@ class ValidateDemoTests(unittest.TestCase):
 
     def test_missing_derived_target_is_rejected(self):
         faults = copy.deepcopy(self.faults)
-        faults["FLT-017"]["derived"] = ["FLT-099"]
+        faults["FLT-017"]["derived"] = ["FLT-999"]
         issues = validate_corpus(faults, self.couplings, complete=False)
-        self.assertTrue(any("FLT-099" in issue for issue in issues))
+        self.assertTrue(any("FLT-999" in issue for issue in issues))
 
     def test_four_facts_in_one_document_are_rejected(self):
         faults = copy.deepcopy(self.faults)
@@ -62,10 +64,12 @@ class ValidateDemoTests(unittest.TestCase):
         issues = validate_corpus(faults, self.couplings, complete=False)
         self.assertTrue(any("同一本文" in issue for issue in issues))
 
-    def test_complete_mode_rejects_the_demo_set(self):
-        issues = validate_corpus(self.faults, self.couplings, complete=True)
-        self.assertTrue(any("FLT-028" in issue and "derived" in issue for issue in issues))
-        self.assertTrue(any("配分" in issue for issue in issues))
+    def test_complete_corpus_is_closed(self):
+        self.assertEqual(len(self.faults), 100)
+        self.assertEqual(len(self.couplings), 24)
+        self.assertEqual(validate_corpus(self.faults, self.couplings, complete=True), [])
+        self.assertEqual(self.faults["FLT-028"]["derived"], ["FLT-073"])
+        self.assertEqual(self.faults["FLT-073"]["role"], "local")
 
 
 if __name__ == "__main__":

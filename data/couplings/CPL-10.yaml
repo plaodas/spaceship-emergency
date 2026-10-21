@@ -1,0 +1,7 @@
+id: CPL-10
+name: 質量影補償器の共有
+links:
+  - mass_shadow_compensator
+  - starboard_fold_coil
+  - gravity_deck
+text: 質量影補償器は折畳み航法と擬似重力甲板で共有する。補償器の負荷が変わると、右舷折畳みコイルの駆動と甲板の加速度基準が同じ負荷を参照する。熱の配管はこの共有に含まれない。

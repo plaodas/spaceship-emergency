@@ -1,0 +1,16 @@
+id: FLT-006
+name: 外板温度センサーの表示だけの変化
+symptoms: 外板温度センサーの表示だけの変化が、折畳みの途中に基準から外れる。外れは外板温度センサーの監視点に留まり、反物質消費センサーの同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯6の記録に残る。
+cause: 外板温度センサーの内部状態が表示だけの変化を維持し、反物質消費センサーへは同じ偏差を伝えない。
+severity: 2
+systems: sensors
+derived:
+  - FLT-007
+components:
+  - hull_temp_sensor
+triggers:
+  - during_jump
+role: sensor_lie
+confusers: []
+discriminators:
+  - 折畳みの途中以外では外板温度センサーの表示だけの変化は再現しない。

@@ -1,0 +1,16 @@
+id: FLT-092
+name: 大気循環の密封の漏れ
+symptoms: 大気循環の密封の漏れが、折畳みの途中に基準から外れる。外れは大気循環の監視点に留まり、右舷居住区ダクトの同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯62の記録に残る。
+cause: 大気循環の内部状態が密封の漏れを維持し、右舷居住区ダクトへは同じ偏差を伝えない。
+severity: 3
+systems: life_support
+derived:
+  - FLT-026
+components:
+  - atmosphere_loop
+triggers:
+  - during_jump
+role: local
+confusers: []
+discriminators:
+  - 折畳みの途中以外では大気循環の密封の漏れは再現しない。

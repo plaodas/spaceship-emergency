@@ -1,0 +1,16 @@
+id: FLT-010
+name: 零点母線の全舷低下
+symptoms: 零点母線の電圧が全舷で低下し、照明の出力が一緒に落ちる。落ち方は左右の外板を区別せず、温度の上がり方も特定の舷に寄らない。低下は定常の給電のあいだ続く。同じ偏差は当該部品の記録に残る。
+cause: 母線の電圧低下が、全舷の照明と制御電源を同時に弱める。
+severity: 3
+systems: power
+derived:
+  - FLT-013
+components:
+  - zpe_bus
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - 特定の舷だけが暗い、という偏りは出ない。

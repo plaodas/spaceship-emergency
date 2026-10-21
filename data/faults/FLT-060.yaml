@@ -1,0 +1,16 @@
+id: FLT-060
+name: 対消滅室右舷ジャケットの応答遅れ
+symptoms: 対消滅室右舷ジャケットの応答遅れが、定常運転に基準から外れる。外れは対消滅室右舷ジャケットの監視点に留まり、光子ノズルの同じ測点は基準内のままである。条件を外すと指示は基準へ戻り、監視帯40の記録に残る。
+cause: 対消滅室右舷ジャケットの内部状態が応答遅れを維持し、光子ノズルへは同じ偏差を伝えない。
+severity: 1
+systems: annihilation
+derived:
+  - FLT-064
+components:
+  - annihilation_jacket
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - 定常運転以外では対消滅室右舷ジャケットの応答遅れは再現しない。

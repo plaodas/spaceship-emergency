@@ -1,0 +1,16 @@
+id: FLT-046
+name: 貯槽残量の低下
+symptoms: ダークマター貯槽の空きが減り、残量計の指示が下がる。空きの減少は貯槽の残量計に出る。熱を消す経路はこの貯槽の外にはない。同じ偏差は当該部品の記録に残る。同じ偏差は当該部品の記録に残る。
+cause: 貯槽に残る空きが、受け入れの余地を狭める。
+severity: 2
+systems: dark_thermal
+derived:
+  - FLT-047
+components:
+  - dark_matter_reservoir
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - 残量計の低下は貯槽側の記録に留まる。

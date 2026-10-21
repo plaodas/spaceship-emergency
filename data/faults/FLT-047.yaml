@@ -1,0 +1,16 @@
+id: FLT-047
+name: 貯槽空きに従うバス余力
+symptoms: 暗黒熱バスが新たに受け取れる余力が、貯槽の空きに従って落ちる。余力が落ちても、特定の舷の外板だけが熱源になるわけではない。空きが戻ると受け取りの余力も戻る。同じ偏差は当該部品の記録に残る。
+cause: バスの受け入れ上限が、貯槽の空きに従う。
+severity: 3
+systems: dark_thermal
+derived:
+  - FLT-048
+components:
+  - dark_thermal_bus
+triggers:
+  - after_heat_pulse
+role: bridge
+confusers: []
+discriminators:
+  - 余力の低下は特定の舷の熱源を指さない。

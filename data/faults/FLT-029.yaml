@@ -1,0 +1,16 @@
+id: FLT-029
+name: 両外套の定常加熱
+symptoms: 対消滅室の外套が、定常の燃焼で左右とも熱を持つ。熱は特定の舷に寄らず、折畳みの時刻にも揃わない。燃焼を止めると両方の指示が一緒に下がる。同じ偏差は当該部品の記録に残る。
+cause: 燃焼中の廃熱が、両外套へ同じように残る。
+severity: 2
+systems: annihilation
+derived:
+  - FLT-030
+components:
+  - annihilation_jacket
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - 特定の舷だけが熱い、という差は出ない。

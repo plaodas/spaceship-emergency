@@ -1,0 +1,16 @@
+id: FLT-048
+name: コイル残熱のバス入口
+symptoms: 折畳みから戻った短い時間、暗黒熱バスの入口温度がコイル残熱の流入で上がる。上がりはバス入口の記録に留まり、噴射格子の供給量は基準のままである。流入が終わると入口温度は戻る。
+cause: コイルの残熱が、バス入口へ短い時間だけ流入する。
+severity: 2
+systems: dark_thermal
+derived:
+  - FLT-051
+components:
+  - dark_thermal_bus
+triggers:
+  - after_jump
+role: local
+confusers: []
+discriminators:
+  - 噴射格子の供給量は基準のままである。

@@ -1,0 +1,16 @@
+id: FLT-062
+name: 右舷ダンパーの保持力低下
+symptoms: 右舷慣性ダンパーの保持力が指令より小さく、機動のあとで加速度の残りが消えるまでが長い。残りはダンパーの位相計に出る。外板の温度とは別の記録である。同じ偏差は当該部品の記録に残る。
+cause: 保持力の不足が、機動後の加速度を残す。
+severity: 2
+systems: gravity
+derived:
+  - FLT-061
+components:
+  - starboard_damper
+triggers:
+  - maneuver
+role: local
+confusers: []
+discriminators:
+  - 外板の温度とは別の記録である。

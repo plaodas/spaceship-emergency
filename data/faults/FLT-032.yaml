@@ -1,0 +1,16 @@
+id: FLT-032
+name: 指令不変の噴射増量
+symptoms: 右舷噴射格子の供給が、推力の指令を変えずに増える。増加は反物質の使用量の記録に残り、外板の温度差には出ない。供給は指令を戻すと基準へ戻る。同じ偏差は当該部品の記録に残る。
+cause: 格子の制御が、指令より多い供給を続ける。
+severity: 3
+systems: annihilation
+derived:
+  - FLT-035
+components:
+  - starboard_injector
+triggers:
+  - steady
+role: local
+confusers: []
+discriminators:
+  - 外板の左右の温度差は増えない。
