@@ -1,0 +1,18 @@
+id: FLT-028
+name: 噴射格子の増量補正
+symptoms: 対消滅室の左右でジャケット温度差がおよそ15Kを超えると、噴射格子は反物質流量を増やし、燃焼を左右対称へ戻す。同じ加速度を保つために必要な反物質の使用量が増加する。増加は温度差が残っているあいだ続く。
+cause: 片側の熱引きが不足して室内に温度勾配ができる。対称な燃焼を維持する補正が、反物質流量を上げる。
+severity: 3
+systems: annihilation
+derived: []
+components:
+  - starboard_injector
+  - annihilation_chamber
+triggers:
+  - steady
+role: local
+confusers:
+  - FLT-008
+discriminators:
+  - 対消滅室の左右ジャケット温度差がおよそ15Kを超えている。
+  - 同じ加速度に対する反物質使用量が増えている。

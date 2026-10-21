@@ -1,0 +1,7 @@
+id: CPL-03
+name: 右舷暗黒熱弁の合流
+links:
+  - starboard_fold_coil
+  - annihilation_jacket
+  - starboard_dark_valve
+text: 暗黒熱バス右舷弁は、右舷折畳みコイルの残熱配管と、対消滅室右舷ジャケットの帰路を同一弁体で合流させる。弁が閉じ側に固着すると、両経路の熱が同時に行き場を失う。左舷弁は別回路である。

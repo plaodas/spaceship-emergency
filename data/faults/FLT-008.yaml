@@ -1,0 +1,17 @@
+id: FLT-008
+name: 右舷給電レグの電圧低下
+symptoms: 右舷給電レグの電圧が下がると、右舷の冷却ポンプと噴射格子制御が同時に弱る。外板温度の上昇と反物質使用量の増加は、電圧が低いあいだ続く。照明の低下と通信品質の低下を伴い、数分では収まらない。
+cause: 右舷給電レグの電圧低下が、同じレグの冷却ポンプと噴射格子制御を同時に弱める。
+severity: 4
+systems: power
+derived: []
+components:
+  - starboard_power_leg
+triggers:
+  - steady
+role: confounder
+confusers: []
+discriminators:
+  - 照明が低下する。
+  - 通信品質が低下する。
+  - 熱と消費の変化が数分で収まらず、復帰直後の窓に限定されない。
