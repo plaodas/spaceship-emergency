@@ -1,0 +1,17 @@
+id: FLT-052
+name: 右舷シールドの粒子加熱
+symptoms: 恒星風シールドの右舷エミッタが粒子を受けるあいだ、右舷外板温度が上がる。上昇は対気速度およびシールド展開と相関し、超光速航法から戻った時刻とは相関しない。反物質の使用量はこの加熱だけでは増えない。
+cause: 恒星風の粒子が右舷エミッタに入り、入射熱が右舷外板の温度を上げる。
+severity: 2
+systems: shield
+derived: []
+components:
+  - starboard_shield_emitter
+  - starboard_hull
+triggers:
+  - shield_on
+role: confounder
+confusers: []
+discriminators:
+  - 右舷外板温度が対気速度およびシールド展開と相関する。
+  - 通常空間への復帰時刻とは相関しない。

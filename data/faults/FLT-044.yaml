@@ -1,0 +1,21 @@
+id: FLT-044
+name: 右舷暗黒熱弁の熱固着
+symptoms: 右舷マニフォールド弁が、短時間の大きな熱入力のあと閉じ側へ固着する。固着中、担当区画の廃熱は貯槽へ届かず右舷外板側へ漏れる。同時に対消滅室右舷ジャケットの熱引きが落ち、そのジャケット温度が上がる。
+cause: 弁座が熱膨張し、高温のあいだだけ閉じ側で固着する。熱入力が収まって弁体が冷えると固着は解ける。
+severity: 3
+systems: dark_thermal
+derived:
+  - FLT-028
+components:
+  - starboard_dark_valve
+  - annihilation_jacket
+triggers:
+  - after_heat_pulse
+role: bridge
+confusers:
+  - FLT-052
+  - FLT-008
+discriminators:
+  - 熱入力の直後に右舷弁の開度が落ちる。
+  - 左舷弁は動いたまま。
+  - 右舷ジャケット温度が上がる。
