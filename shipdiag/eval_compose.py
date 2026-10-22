@@ -8,15 +8,14 @@ import yaml
 
 from shipdiag.fts import document_text, score_corpus
 from shipdiag.gate import DATA, MODEL_FILE
-from shipdiag.index import index_faults, persistent_client, search
+from shipdiag.index import index_faults, persistent_client
 from shipdiag.ollama import DEFAULT_HOST, embedder, ollama_ready
-from shipdiag.retrieve import assemble
+from shipdiag.retrieve import SEED_LIMIT, assemble, clause_seeds
 from shipdiag.validate import load_corpus, validate_corpus
 
 ROOT = Path(__file__).resolve().parents[1]
 GOLD = DATA / "eval" / "compose.yaml"
 CHROMA_PATH = DATA / "chroma"
-SEED_LIMIT = 8
 
 
 def load_gold(path=GOLD):
@@ -39,9 +38,9 @@ def evaluate(host, faults, couplings, embed, collection):
     for item in load_gold():
         query = item["query"]
         required = list(item["required"])
-        hits = search(collection, embed([query])[0], k=SEED_LIMIT)
+        hits = clause_seeds(query, embed, collection, limit=SEED_LIMIT)
         cluster = assemble(faults, couplings, [card_id for card_id, _distance in hits])
-        cluster_ids = {entry["id"] for entry in cluster}
+        cluster_ids = {entry["id"] for entry in cluster["items"]}
         scores = score_corpus(documents, query)
         ranked = sorted(scores.items(), key=lambda pair: (-pair[1], pair[0]))
         fts_ids = {doc_id for doc_id, score in ranked[:SEED_LIMIT] if score > 0}

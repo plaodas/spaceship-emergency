@@ -4,8 +4,9 @@ import os
 import sys
 from pathlib import Path
 
-from shipdiag.index import index_faults, persistent_client, search
+from shipdiag.index import index_faults, persistent_client
 from shipdiag.ollama import DEFAULT_HOST, embedder, ensure_model, ollama_ready
+from shipdiag.retrieve import clause_seeds
 from shipdiag.validate import load_corpus, validate_corpus
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -38,11 +39,15 @@ def main():
         ensure_model(host, model)
         embed = embedder(host, model)
         collection = index_faults(faults, embed, client, model)
-        hits = search(collection, embed([Q01])[0], k=len(faults))
+        hits = clause_seeds(Q01, embed, collection, limit=len(faults))
         print(f"model {model}")
         for rank, (card_id, distance) in enumerate(hits, start=1):
             print(f"{rank} {card_id} {distance:.4f}")
         limit = pass_rank(len(faults))
+        seed_ids = [card_id for card_id, _distance in hits[:limit]]
+        if "CPL-03" in seed_ids:
+            print("拡張前の種に CPL-03 が入っています。", file=sys.stderr)
+            return 1
         rank = next((i for i, (card_id, _) in enumerate(hits, start=1) if card_id == "FLT-017"), None)
         if rank is not None and rank <= limit:
             MODEL_FILE.write_text(model + "\n", encoding="utf-8")

@@ -41,7 +41,7 @@
   required: [FLT-017, FLT-048, CPL-01]
   avoid: [FLT-028]
 - id: Q15
-  query: ダークマター貯槽の残量が減るにつれ、ジャンプ後の熱引きが悪くなった気がする。
+  query: ジャンプのあと、暗い粉の入れ物が空に近づくほど、熱の抜けが悪くなった。
   required: [FLT-046, FLT-047, CPL-07]
   avoid: []
 - id: Q16
@@ -49,7 +49,7 @@
   required: [FLT-017, FLT-044, FLT-028, CPL-03]
   avoid: [FLT-052, FLT-061, FLT-008]
 - id: Q17
-  query: 警報は右舷温度と反物質流量の二つが、復帰後すぐ同時に点く。
+  query: 警報は右舷温度と反物質流量の二つが、復帰後すぐ点く。
   required: [FLT-017, FLT-044, FLT-028, CPL-03]
   avoid: [FLT-052, FLT-061, FLT-008]
 - id: Q19
