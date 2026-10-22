@@ -5,10 +5,10 @@ import sys
 
 from shipdiag.fts import document_text, score_corpus
 from shipdiag.gate import DATA, MODEL_FILE, Q01
-from shipdiag.index import index_faults, persistent_client, search
+from shipdiag.index import index_faults, persistent_client
 from shipdiag.ollama import DEFAULT_HOST, embedder, generate, listed_models, model_present, ollama_ready
 from shipdiag.prompt import render
-from shipdiag.retrieve import assemble
+from shipdiag.retrieve import SEED_LIMIT, assemble, clause_seeds
 from shipdiag.validate import load_corpus, validate_corpus
 
 CHROMA_PATH = DATA / "chroma"
@@ -33,7 +33,7 @@ def main():
     embed_model = MODEL_FILE.read_text(encoding="utf-8").strip()
     embed = embedder(host, embed_model)
     collection = index_faults(faults, embed, persistent_client(CHROMA_PATH), embed_model)
-    hits = search(collection, embed([Q01])[0], k=8)
+    hits = clause_seeds(Q01, embed, collection, limit=SEED_LIMIT)
     print("seeds")
     for rank, (card_id, distance) in enumerate(hits, start=1):
         print(f"{rank} {card_id} {distance:.4f}")
@@ -43,10 +43,11 @@ def main():
         return 1
 
     cluster = assemble(faults, couplings, seed_ids)
+    print("mode", cluster["mode"])
     print("cluster")
-    for item in cluster:
+    for item in cluster["items"]:
         print(f"{item['id']} {item['reason']}")
-    ids = {item["id"] for item in cluster}
+    ids = {item["id"] for item in cluster["items"]}
     missing = REQUIRED - ids
     if missing:
         print(f"クラスタに必要な文書がありません: {sorted(missing)}", file=sys.stderr)
@@ -69,7 +70,7 @@ def main():
     if generation is None:
         print("生成モデルが無いので診断文は作りません。")
         return 0
-    system, user = render(Q01, cluster)
+    system, user = render(Q01, cluster["items"], cluster["mode"])
     print("diagnosis")
     print(generate(host, generation, system, user))
     return 0
